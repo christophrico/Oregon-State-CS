@@ -12,22 +12,26 @@
 * [About the Course](#about-the-course)
 * [Getting Started](#getting-started)
 * Coursework
- * [Lab 1: Refererence variables for matrix ops](https://github.com/christophrico/Intro-To-CS-II/tree/master/lab1)
- * [Lab 2: Filestream ops](https://github.com/christophrico/Intro-To-CS-II/tree/master/lab2)
- * [Lab 3: Functional decomposition, OOP for dice game](https://github.com/christophrico/Intro-To-CS-II/tree/master/lab3)
- * [Lab 4: Intro to data structures](https://github.com/christophrico/Intro-To-CS-II/tree/master/lab4)
- * [Lab 5: Recursive functions](https://github.com/christophrico/Intro-To-CS-II/tree/master/lab5)
- * [Lab 6: Linked lists](https://github.com/christophrico/Intro-To-CS-II/tree/master/lab6)
- * [Project 1: Langton's ant](https://github.com/christophrico/Intro-To-CS-II/tree/master/project1)
- * [Project 2: Shopping list program](https://github.com/christophrico/Intro-To-CS-II/tree/master/project2)
- * [Project 3: OOP for a fantasy RPG](https://github.com/christophrico/Intro-To-CS-II/tree/master/project3)
- * [Group project: Rock, paper, scissors](https://github.com/christophrico/Intro-To-CS-II/tree/master/group)
- * [Final project: OOP for a Burning Man RPG](https://github.com/christophrico/Intro-To-CS-II/tree/master/final)
+ * [Lab 1: Refererence variables for matrix ops](./lab1)
+ * [Lab 2: Filestream ops](./lab2)
+ * [Lab 3: Functional decomposition, OOP for dice game](./lab3)
+ * [Lab 4: Intro to data structures](./lab4)
+ * [Lab 5: Recursive functions](./lab5)
+ * [Lab 6: Linked lists](./lab6)
+ * [Project 1: Langton's ant](./project1)
+ * [Project 2: Shopping list program](./project2)
+ * [Project 3: OOP for a fantasy RPG](./project3)
+ * [Group project: Rock, paper, scissors](./group)
+ * [Final project: OOP for a Burning Man RPG](./final)
 
 ---
 <!-- ABOUT THE Course -->
 ## About The Course
 Basic data structures. Computer programming techniques and application of software engineering principles. Introduction to analysis of programs.
+
+*Langton's ant in action!*
+
+![langtons-ant](./project1/langtons_animation.gif)
 
 ---
 <!-- GETTING STARTED -->

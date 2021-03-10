@@ -22,4 +22,4 @@ $ ./ftserve <CMD_PORTNUM>
 $ chmod +x ftclient
 $ ./ftclient <SERVER_HOSTNAME> <CMD_PORTNUM> <DATA_PORTNUM> <COMMAND> <FILENAME>
 ```
-*Please note that <CMD_PORTNUM> must be the same for both ftclient and ftserve!*
+*Please note that CMD_PORTNUM must be the same for both ftclient and ftserve!*

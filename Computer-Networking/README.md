@@ -12,8 +12,8 @@
 * [About the Course](#about-the-course)
 * [Getting Started](#getting-started)
 * Coursework
- 1. [Client-server chat program using sockets in C and Python](https://github.com/christophrico/Computer-Networking/tree/master/p1)
- 2. [FTP program using sockets in C and Python](https://github.com/christophrico/Computer-Networking/tree/master/p2)
+ 1. [Client-server chat program using sockets in C and Python](./p1)
+ 2. [FTP program using sockets in C and Python](./p2)
 
 
 ---

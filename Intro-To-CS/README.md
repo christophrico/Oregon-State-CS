@@ -12,15 +12,15 @@
 * [About the Course](#about-the-course)
 * [Getting Started](#getting-started)
 * Coursework
- * [Week 1: Printing to the console](https://github.com/christophrico/Intro-To-CS/tree/master/week1)
- * [Week 2: Basic math operations](https://github.com/christophrico/Intro-To-CS/tree/master/week2)
- * [Week 4: Functional decomposition](https://github.com/christophrico/Intro-To-CS/tree/master/week4)
- * [Week 5: Intro to OOP](https://github.com/christophrico/Intro-To-CS/tree/master/week5)
- * [Week 6: OOP, User-defined classes](https://github.com/christophrico/Intro-To-CS/tree/master/week6)
- * [Week 7: More OOP](https://github.com/christophrico/Intro-To-CS/tree/master/week7)
- * [Week 8: Reference variables](https://github.com/christophrico/Intro-To-CS/tree/master/week8)
- * [Week 9: Combining skills into tic-tac-toe](https://github.com/christophrico/Intro-To-CS/tree/master/week9)
- * [Week 10: Combining skills into a shopping list](https://github.com/christophrico/Intro-To-CS/tree/master/week10)
+ * [Week 1: Printing to the console](./week1)
+ * [Week 2: Basic math operations](./week2)
+ * [Week 4: Functional decomposition](./week4)
+ * [Week 5: Intro to OOP](./week5)
+ * [Week 6: OOP, User-defined classes](./week6)
+ * [Week 7: More OOP](./week7)
+ * [Week 8: Reference variables](./week8)
+ * [Week 9: Combining skills into tic-tac-toe](./week9)
+ * [Week 10: Combining skills into a shopping list](./week10)
 
 ---
 <!-- ABOUT THE Course -->

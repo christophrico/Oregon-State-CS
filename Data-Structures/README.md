@@ -12,12 +12,12 @@
 * [About the Course](#about-the-course)
 * [Getting Started](#getting-started)
 * Coursework
- 1. [Sorting, value replacement, string ops](https://github.com/christophrico/Data-Structures/tree/master/hw1)
- 2. [Dynamic arrays for implementing a stack](https://github.com/christophrico/Data-Structures/tree/master/hw2)
- 3. [Circular linked lists for implementing a deque](https://github.com/christophrico/Data-Structures/tree/master/hw3)
- 4. [Type checking, self-sorting lists](https://github.com/christophrico/Data-Structures/tree/master/hw4)
- 5. [Hash tables for implementing a spell checker](https://github.com/christophrico/Data-Structures/tree/master/hw5)
- 6. [Adjacency lists, graph theory, BFS and DFS searching](https://github.com/christophrico/Data-Structures/tree/master/hw6)
+ 1. [Sorting, value replacement, string ops](./hw1)
+ 2. [Dynamic arrays for implementing a stack](./hw2)
+ 3. [Circular linked lists for implementing a deque](./hw3)
+ 4. [Type checking, self-sorting lists](./hw4)
+ 5. [Hash tables for implementing a spell checker](./hw5)
+ 6. [Adjacency lists, graph theory, BFS and DFS searching](./hw6)
 
 
 ---

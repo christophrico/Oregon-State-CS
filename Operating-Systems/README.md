@@ -12,10 +12,10 @@
 * [About the Course](#about-the-course)
 * [Getting Started](#getting-started)
 * Coursework
- 1. [Matrix operations in Bash](https://github.com/christophrico/Operating-Systems/tree/master/pg1)
- 2. [Multithreading and file ops](https://github.com/christophrico/Operating-Systems/tree/master/pg2)
- 3. [Miniature shell, with multiprocessing capability](https://github.com/christophrico/Operating-Systems/tree/master/pg3)
- 3. [File ops, encryption, client-server ops](https://github.com/christophrico/Operating-Systems/tree/master/pg3)
+ 1. [Matrix operations in Bash](./pg1)
+ 2. [Multithreading and file ops](./pg2)
+ 3. [Miniature shell, with multiprocessing capability](./pg3)
+ 3. [File ops, encryption, client-server ops](./pg3)
 
 
 ---

@@ -12,11 +12,11 @@
 * [About the Course](#about-the-course)
 * [Getting Started](#getting-started)
 * Coursework
- 1. [Elementary arithmetic](https://github.com/christophrico/Assembly-Languages/tree/master/PG)
- 2. [Fibonacci numbers](https://github.com/christophrico/Assembly-Languages/tree/master/PG2)
- 3. [Composite numbers](https://github.com/christophrico/Assembly-Languages/tree/master/PG3)
- 4. [Sorting random integers](https://github.com/christophrico/Assembly-Languages/tree/master/PG4)
- 5. [User entry for arithmetic](https://github.com/christophrico/Assembly-Languages/tree/master/PG5)
+ 1. [Elementary arithmetic](./PG)
+ 2. [Fibonacci numbers](./PG2)
+ 3. [Composite numbers](./PG3)
+ 4. [Sorting random integers](./PG4)
+ 5. [User entry for arithmetic](./PG5)
 
 
 ---
