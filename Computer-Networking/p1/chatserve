@@ -1,0 +1,9 @@
+#Author: Christopher Rico
+#OSU ID: 933239746
+#Date: 5/6/2018
+#Description: shell script to run Project 1
+
+
+#!/bin/bash
+
+python3 ./chatserve.py $@

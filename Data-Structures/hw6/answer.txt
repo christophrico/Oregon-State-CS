@@ -1,0 +1,16 @@
+/*
+ * CS 261 Data Structure
+ * Assignment 6
+ * Name: Christopher Rico
+ * Date: 11/27/17
+ */
+
+1. The graphs in the provided files are stored as adjacency lists.
+
+2. Graphs 2 and 3 are connected - prog's output shows that each vertex has a path to every other vertex in both a bfs and dfs search.
+
+3. With an undirected graph, changing the source/destination would not affect the output at all. However, with a directed graph, chaning the source/destination would definitely change the output. A path is only valid in one direction with a directed graph!
+
+4. BFS is a great search if you're interested in uncovering every single path in a graph. However, it tends to use more memory and has a longer run time since it will explore every reachable node. DFS has the opposite: will always discover a path, but it also can get trapped in an 'infinite' path while a BFS will not. DFS, because it explores a single path, tends to use less memory than a BFS.
+
+5. Both DFS and BFS have a Big-O execution time of O(e), where e is the number of edges in the graph.

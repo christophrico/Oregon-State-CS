@@ -1,0 +1,4 @@
+0	bird
+10	boom
+2	desk 
+15	bottle 

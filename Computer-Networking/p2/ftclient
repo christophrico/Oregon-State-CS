@@ -1,0 +1,258 @@
+#!/usr/bin/python3
+
+#Author: Christopher Rico
+#OSU ID: 933239746
+#Date: 6/3/2018
+#Description: ftclient program:
+#This program receives a server host name, command port num, data port num,
+#command (-l or -g) and optional filename via the command line
+#Then establishes a connection with ftserver on specified command port.
+#It then sends a request to ftserver with its ip address, specified data port num, and command.
+#ftclient either recieves the current directory of ftserver and displays it to the console
+#Or recieves and saves a requested file from ftserver
+
+import sys
+from socket import *
+import os
+
+
+#--------------------- checkDupFiles -----------------------#
+#Args: file name to check
+#Will check if the specified filename already exists in the CWD
+#If so, asks user to either enter a new filename or allow an overwrite
+#Returns: Either the new filename or the original filename
+#-----------------------------------------------------------#
+def checkDupFiles(fileIn):
+    #get the names of all files in current directory
+    allFiles = os.listdir()
+
+    #check all these files against the incoming file name
+    for file in allFiles:
+        #if one of them has the same name
+        if fileIn == file:
+            #ask the user if they would like to rename the incoming file
+            #or replace the existing file
+            print("\nAn item named " + fileIn + " already exists in this location.\n"
+                "Would you like to replace it with the one you're receiving?")
+
+            instruction = "Enter 'y' to replace the existing file or 'n' to rename the file you are recieving:\n"
+            response = input(instruction)
+            #validate the response
+            while response not in ['y', 'Y', 'n', 'N']:
+                print("That was not a valid response!")
+                response = input(instruction)
+                print("\nResponse was " + response)
+
+
+            #if the user wants to rename the file, let them input the new name
+            if response == 'n' or response == 'N':
+                newName = input("Please enter the new file name: ")
+                #if they're playing games and enter the same filename,
+                #make them go through the whole damn dialogue again
+                if newName == fileIn:
+                    checkDupFiles(fileIn)
+
+            #else if they want to replace the existing file, just return the original name
+            elif response == 'y' or response == 'Y':
+                newName = fileIn
+
+    return newName
+
+
+
+#------------------- setUpDataConnection -------------------#
+#Args: port number to set up
+#Sets up and binds a listen socket on the specified port number
+#Returns: set up listen data socket
+#-----------------------------------------------------------#
+def setUpDataConnection(portNum):
+    serverSock = socket(AF_INET,SOCK_STREAM)
+    serverSock.bind(('',portNum))
+    serverSock.listen(1)
+    data_socket, addr = serverSock.accept()
+    return data_socket
+
+
+
+#----------------------- getHostname -----------------------#
+#Args: none
+#Retrieves ip address of ftclient
+#Returns: ip address of ftclient
+#-----------------------------------------------------------#
+def getHostname():
+    # helper method to get IP address
+    s = socket(AF_INET, SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    return s.getsockname()[0]
+
+
+
+#--------------------- initiateContact ---------------------#
+#Args: ftserver host name, command port num
+#Sets up command connection with ftserver on specified port num
+#Returns: connected cmd socket file descriptor
+#-----------------------------------------------------------#
+def initiateContact(hostName, portNum):
+    clientSocket = socket(AF_INET, SOCK_STREAM)
+    clientSocket.connect((hostName,portNum))
+
+    return clientSocket
+
+
+
+#------------------------- valArgs -------------------------#
+#Args: command line arguments as an array
+#Validates that the command port num and data port num are digits
+#And there are the correct number of args - between 5 and 6
+#Returns: False if any of these are not met, True if they are met
+#-----------------------------------------------------------#
+def valArgs(args):
+    isTrue = True
+    #args 2 and 3 should be port nums
+    if args[2].isdigit() != True:
+        isTrue = False
+    if args[3].isdigit() != True:
+        isTrue = False
+    #and we should have between 5 and 6 args (filename is optional)
+    if len(args) > 6:
+        isTrue = False
+
+    return isTrue
+
+
+
+#----------------------- receiveFile -----------------------#
+#Args: connected socket file descriptor
+#Receives data on the specified connection in chunks of 1000 bytes
+#Decodes these bytes and concatenates them into a string
+#until "__done__" is recv'd
+#Returns: String with requested data
+#-----------------------------------------------------------#
+def receiveFile(sock):
+    masg = ''
+    msg = (sock.recv(1000)).decode('utf-8')
+    while "__done__" not in msg:
+        msg += (sock.recv(1000)).decode('utf-8')
+
+    finalMsg = msg.split("__done__")
+
+    return finalMsg[0]
+
+
+
+#----------------------- makeRequest -----------------------#
+#Args: cmd-line args, client IP addy, command socket FD
+#Sends desired data port, command, and client IP addy to ftserver
+#Receives reply from server indicating whether command was valid or not
+#Returns: True or False indicating command validity
+#-----------------------------------------------------------#
+def makeRequest(args, cIPAdd, cmdSock):
+    #send the data port num first
+    cmdSock.send(args[3].encode('utf-8'))
+    cmdSock.recv(1024)
+    #next send the cmd
+    cmdSock.send(args[4].encode('utf-8'))
+    cmdSock.recv(1024)
+    #next send the IP addres
+    cmdSock.send(cIPAdd.encode('utf-8'))
+
+    #now wait for reply whether command is valid or not
+    replyByte = cmdSock.recv(1024)
+    reply = replyByte.decode('utf-8')
+
+    if reply == "ERROR":
+        cmdValid = False
+    elif reply == "VC":
+        cmdValid = True
+
+    return cmdValid
+
+
+
+def main():
+    #validate command-line args
+    if len(sys.argv) < 5 or valArgs(sys.argv) != True:
+        sys.exit("USAGE: Enter <SERVER_HOSTNAME> <CMD_PORTNUM> <DATA_PORTNUM> <COMMAND> (optional) <FILENAME>\n"
+                "as command-line arguments.\n")
+
+    #set up command connection with the server on command port num, get a socket fd
+    serverHostName = sys.argv[1]
+    cmdPortNum = int(sys.argv[2])
+    cmdSocket = initiateContact(serverHostName, cmdPortNum)
+    clientHostName = getHostname()
+    dataSocket = None
+
+
+    ####################################################
+    #              Send Command To Server              #
+    ####################################################
+    cmdValid = makeRequest(sys.argv, clientHostName, cmdSocket)
+
+    #if server replies that command is invalid
+    if cmdValid == False:
+        #close command socket and exit
+        cmdSocket.close()
+        #print the error message to the screen
+        sys.exit("ERROR: That is not a valid command.\nValid commands are -l or -g <filename>")
+
+
+    #if server replies with confirmation, command is valid
+    elif cmdValid == True:
+        ####################################################
+        #              Receive Data From Server            #
+        ####################################################
+        #if user entered command -l
+        if sys.argv[4] == "-l":
+            #set up the data socket on the specified data port num
+            dataPortNum = int(sys.argv[3])
+            dataSocket = setUpDataConnection(dataPortNum)
+            #recieve the directory from server on data connection
+            direct = receiveFile(dataSocket)
+            #print the directory
+            print("ftserve current working directory:")
+            print(direct)
+
+        #else if user entered command -g
+        elif sys.argv[4] == "-g":
+            #send the filename over
+            cmdSocket.send(sys.argv[5].encode('utf-8'))
+
+            #receive confirmation or error from server re: file validity
+            validFile = (cmdSocket.recv(1024)).decode('utf-8')
+
+            #if file is not valid, close sockets and exit
+            if validFile == "ERROR":
+                cmdSocket.close()
+                sys.exit("ftserve is not able to find file named " + sys.argv[5])
+
+            #else server can find this file
+            elif validFile == "VF":
+                #set up the data socket on the specified data port num
+                dataPortNum = int(sys.argv[3])
+                dataSocket = setUpDataConnection(dataPortNum)
+
+                #check to see that the user-entered filename
+                #does not already exist in the current directory
+                dataFile = sys.argv[5]
+                newFileName = checkDupFiles(dataFile)
+
+                #recv contents of server file on data connection
+                fileContents = receiveFile(dataSocket)
+
+                #write contents of the server file to filename
+                with open(newFileName, "w+") as f:
+                    f.write(fileContents)
+                    f.close()
+                #print that transfer is complete
+                print("File transfer complete. " + newFileName + " has been saved.")
+
+
+    #close the control connection
+    cmdSocket.close()
+    #if data connection exists, close it
+    if dataSocket:
+        dataSocket.close()
+
+
+if __name__ == '__main__':
+    main()
