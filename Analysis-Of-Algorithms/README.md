@@ -12,11 +12,11 @@
 * [About the Course](#about-the-course)
 * [Getting Started](#getting-started)
 * Coursework
- 1. [(O) of sorting algorithms](./master/hw1)
- 2. [More sorting algorithms](./hw2)
- 3. [Making change with dynamic programming](./hw3)
- 4. [Scheduling with greedy algorithms](./hw4)
- 6. [Nearest-neighbor implementation of TSP](./finalProj)
+  1. [(O) of sorting algorithms](./master/hw1)
+  2. [More sorting algorithms](./hw2)
+  3. [Making change with dynamic programming](./hw3)
+  5. [Scheduling with greedy algorithms](./hw4)
+  6. [Nearest-neighbor implementation of TSP](./finalProj)
 
 
 ---
