@@ -12,14 +12,14 @@
 * [About the Course](#about-the-course)
 * [Getting Started](#getting-started)
 * Coursework
- 1. [OpenMP with 1 or 4 threads](./p0)
- 2. [Volume calculations with 1-16 OpenMP threads](./p1)
- 3. [Astrophysics calculations with 1-16 OpenMP threads](./p2)
- 4. [Array ops using OpenMP](./p3)
- 5. [Biological simulations with OpenMP](./p4)
- 6. [SIMD SSE vs C++ MP](./p5)
- 7. [MapReduce using OpenMP and CUDA](./p6)
- 8. [OpemMP vs OpenCL vs SIMD autocorrelate](./p7)
+  1. [OpenMP with 1 or 4 threads](./p0)
+  2. [Volume calculations with 1-16 OpenMP threads](./p1)
+  3. [Astrophysics calculations with 1-16 OpenMP threads](./p2)
+  4. [Array ops using OpenMP](./p3)
+  5. [Biological simulations with OpenMP](./p4)
+  6. [SIMD SSE vs C++ MP](./p5)
+  7. [MapReduce using OpenMP and CUDA](./p6)
+  8. [OpemMP vs OpenCL vs SIMD autocorrelate](./p7)
 
 
 ---
